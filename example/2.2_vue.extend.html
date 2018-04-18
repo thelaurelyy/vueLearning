@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>vue.extend 构造器的延伸 </title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<!--
+    vue.extend 构造器的延伸
+    Vue.extend 返回的是一个“扩展实例构造器”,也就是预设了部分选项的Vue实例构造器。经常服务于Vue.component用来生成组件。
+    可以简单理解为当在模板中遇到该组件名称作为标签的自定义元素时，会自动调用“扩展实例构造器”来生产组件实例，并挂载到自定义元素上。
+-->
+
+<!--注意：
+    extend API 中data的值必须以 匿名函数 的形式定义，以对象的形式返回！！！
+    不能像在构造器中一样直接以对象的形式定义
+-->
+
+    <h1>vue.extend 拓展实例构造器</h1>
+    <hr>
+    <author></author>
+    <div id="author"></div>
+
+    <script type="text/javascript">
+        var authorExtend = Vue.extend({
+            template: '<p><a :href="extendUrl" target="_blank">{{extendName}}</a></p>',
+            data: function(){
+              return {
+                  extendUrl: 'http://jsPang.com',
+                  extendName: 'violet',
+              }
+            },
+        });
+
+        new authorExtend().$mount('author');
+        new authorExtend().$mount('#author');
+    </script>
+</body>
+</html>

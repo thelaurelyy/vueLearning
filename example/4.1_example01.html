@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>实例入门-实例属性</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<h1>实例入门 之 实例属性</h1>
+<hr>
+    <div id="app">
+        {{message}}
+        {{num}}
+        <button @click="add">Add</button>
+    </div>
+
+    <!--
+        1、在Vue中使用jQuery，只能在mounted 或者 updated 生命周期函数中使用；
+        2、外部调用实例中的属性和方法， eg. app.add();
+    -->
+
+    <script type="application/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: "hello world !",
+                num: 0,
+            },
+            methods: {
+                add: function(){
+                    return this.num++;
+                }
+            },
+            //在Vue中使用jQuery
+           /* mounted: function(){
+                $('#app').html('我执行了jQuery方法!');
+                console.log('我是mounted生命周期函数');
+            }*/
+        });
+
+        //外部调用实例中的属性和方法
+        app.add();
+        console.log(app);
+
+    </script>
+</body>
+</html>
+

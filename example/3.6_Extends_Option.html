@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Extends 拓展选项操作</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>Extends option 拓展选项操作</h1>
+<hr>
+<div id="app">
+    <p>{{number}}</p>
+    <p>${ number }</p>
+    <button @click="addNum()">ADD</button>
+</div>
+
+<!--
+    Mixins 和 extends 的用途很相似，两者的用法也相同；
+-->
+<!--
+    1、用  对象 的形式引入拓展的方法，
+    2、在Vue中，拓展的方法先执行，原生的方法后执行；
+       注意：这并不是方法的覆盖，而是被执行了两遍。
+       但是当拓展方法和构造器的方法重名时，拓展的方法无法展现，也就是不起作用。
+
+    3、delimiters  用于修改插值的符号；
+-->
+
+<script type="text/javascript">
+
+    var extendsObj = {
+        updated: function () {
+            console.log('我是拓展的updated');
+        },
+        methods: {
+            addNum: function () {
+                console.log('extends 选项中的 addNum方法');
+                this.number++;
+            }
+        }
+    };
+
+    var app = new Vue({
+        el: "#app",
+        data: {
+            number: 0,
+        },
+        methods: {
+            addNum: function(){
+                console.log('methods 选项中的 addNum方法');
+                this.number++;
+            }
+        },
+        updated: function(){
+            console.log('我是原生的updated');
+        },
+        extends: extendsObj,
+        delimiters: ['${', '}']
+    });
+</script>
+</body>
+</html>
+

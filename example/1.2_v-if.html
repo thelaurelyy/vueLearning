@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Hello World</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-if & v-else & v-show</h1>
+    <hr>
+    <div id="app">
+        <div v-if="isLogin">你好，YY !</div>
+        <div v-else>请登录!</div>
+        <div v-show="isPass">你好，YY !</div>
+    </div>
+
+    <!--
+        v-if: 判断是否加载，在需要的时候选择性加载文件，可以减轻服务器的压力；
+        v-show： 调整css-display 属性，可以使客户端操作更加流畅
+    -->
+
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: "#app",
+            data:{
+                isLogin: false,
+                isPass: false,
+            },
+        });
+    </script>
+</body>
+</html>

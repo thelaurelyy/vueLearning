@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>v-pre & v-cloak & v-once 实例</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<h1>v-pre & v-cloak & v-once 实例</h1>
+<hr>
+<div id="app">
+    <div v-pre>{{message}}</div>
+    <div v-cloak>渲染完成才显示！</div>
+    <div v-once>第一次绑定的值：{{message}}</div>
+    <input type="text" v-model="message">
+    <div>message：{{message}}</div>
+</div>
+
+<!--
+    v-pre：在模板中跳过vue的编译，直接输出原始值;
+    v-cloak：在vue渲染完指定的整个DOM后才进行显示。它必须和CSS样式一起使用;
+    v-once：在第一次DOM时进行渲染，渲染完成后视为静态内容，跳出以后的渲染过程;
+-->
+
+<script type="text/javascript">
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: 'Hello World!',
+        },
+        methods:{
+
+        }
+    });
+</script>
+</body>
+</html>

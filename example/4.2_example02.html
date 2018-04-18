@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>实例入门-实例方法</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<h1>实例入门 之 实例方法</h1>
+<hr>
+    <div id="app">
+    </div>
+
+    <button onclick="destroy()">Destroy</button>
+    <button onclick="forceUpdate()">forceUpdate</button>
+    <button onclick="nextTick()">nextTick</button>
+
+    <!--
+        1、 $mount    挂载方法
+        2、 $destroy  卸载方法
+        3、 $forceUpdate  更新方法
+        4、 $nextTick 数据修改方法
+        5、 安装Vue的控制台调试工具
+    -->
+
+    <script type="application/javascript">
+
+        var violet = Vue.extend({
+            template: `<p>{{message}}</p>`,
+            data: function(){
+                return {
+                    message: 'Hello , this is my first vue demo !'
+                }
+            },
+            mounted: function () {
+                console.log('mounted 被创建！');
+            },
+            destroyed: function () {
+                console.log('destroy 销毁之后！');
+            },
+            updated: function () {
+                console.log('forceUpdate 数据更新之后！')
+            }
+        });
+
+        var vm = new violet().$mount('#app');
+        
+        function destroy() {
+            vm.$destroy();
+        }
+        
+        function forceUpdate() {
+            vm.$forceUpdate();
+        }
+
+        //当Vue构造器里的data值被修改完成后会调用这个方法，
+        //也相当于一个钩子函数吧，和构造器里的updated生命周期很像。
+        function nextTick() {
+            vm.message = "update message info";
+            vm.$nextTick(function () {
+                console.log('message 更新完成之后我被调用了！')
+            });
+        }
+    </script>
+</body>
+</html>
+

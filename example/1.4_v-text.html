@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>v-text & v-html实例</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>v-text 和 v-html 实例</h1>
+<hr>
+<div id="app">
+    <span>{{message}}</span>=<span v-text="message"></span>
+    <div v-html="msgHtml"></div>
+</div>
+
+
+<!--
+    v-text:避免在加载缓慢或者js出错时，暴露变量信息；
+           <span v-test="message"></span> 等同于
+           <span>{{message}}</span>
+    v-html:双大括号会将数据解释为纯文本，而非HTML。
+          为了输出真正的HTML，你就需要使用v-html 指令。
+-->
+<!--
+需要注意的是:
+    在生产环境中动态渲染HTML是非常危险的，因为容易导致XSS攻击。
+    所以只能在可信的内容上使用v-html，永远不要在用户提交和可操作的网页上使用。
+
+    XSS攻击全称跨站脚本攻击,
+    是一种在web应用中的计算机安全漏洞，它允许恶意web用户将代码植入到提供给其它用户使用的页面中
+-->
+
+<script type="text/javascript">
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: "Hello World!",
+            msgHtml: "<span>Hello World!</span>",
+        }
+    });
+</script>
+</body>
+</html>

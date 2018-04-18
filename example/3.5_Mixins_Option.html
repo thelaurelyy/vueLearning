@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Mixins 混入选项操作</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>Mixins option 混入选项操作</h1>
+<hr>
+<div id="app">
+    <p>{{number}}</p>
+    <button @click="addNum()">ADD</button>
+</div>
+
+<!--
+    Mixins一般有两种用途：
+    1、在你已经写好了构造器后，需要增加方法或者临时的活动时使用的方法，这时用混入会减少源代码的污染。
+       比如电商活动满一百减十元、公共方法的Mixins
+    2、很多地方都会用到的公用方法，用混入的方法可以减少代码量，实现代码重用。
+-->
+<!--
+    1、用数组的形式引入混入方法即可；
+    2、在Vue中，混入的方法先执行，原生的方法后执行；
+       注意：这并不是方法的覆盖，而是被执行了两遍。
+       但是当混入方法和构造器的方法重名时，混入的方法无法展现，也就是不起作用。
+
+    3、全局混入用全局API的方式： Vue.mixin({})
+       注意混入的执行顺序： 全局混入先执行、其次是混入选项，最后执行原生方法；
+-->
+
+<script type="text/javascript">
+
+    Vue.mixin({
+        updated: function(){
+            console.log('我是全局的混入');
+        },
+    });
+
+    var addConsole = {
+        updated: function(){
+            console.log('数据已发生变化，变更为：'+ this.number);
+        }
+    };
+
+    var app = new Vue({
+        el: "#app",
+        data: {
+            number: 0,
+        },
+        methods: {
+            addNum: function(){
+                this.number++;
+            }
+        },
+        updated: function(){
+            console.log('我是原生的updated');
+        },
+        mixins: [addConsole],
+    });
+</script>
+</body>
+</html>
+

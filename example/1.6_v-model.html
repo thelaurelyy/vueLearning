@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>v-model实例</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>v-model实例</h1>
+<hr>
+<div id="app">
+    <p>原始文本信息：{{message}}yuanyue</p>
+    <h3>文本框</h3>
+    <p>v-model:<input type="text" v-model="message"></p>
+    <p>v-model.lazy:<input type="text" v-model.lazy="message"></p>
+    <p>v-model.number:<input type="text" v-model.number="message"></p>
+    <P>v-model.trim:<input type="text" v-model.trim="message"></P>
+    <hr>
+    <h3>文本域</h3>
+    <textarea cols="30" rows="10" v-model="message"></textarea>
+    <hr>
+    <h3>多选框一个值进行绑定</h3>
+    <p>
+        <input type="checkbox" id="isTrue" v-model="ifTrue">
+        <label for="isTrue">{{ifTrue}}</label>
+    </p>
+    <hr>
+    <h3>多选框绑定数组</h3>
+    <p>
+        <input type="checkbox" id="name01" value="yy" v-model="model_names">
+        <label for="name01">yy</label>
+        <input type="checkbox" id="name02" value="yuanyue" v-model="model_names">
+        <label for="name02">yuanyue</label>
+        <input type="checkbox" id="name03" value="laurel" v-model="model_names">
+        <label for="name03">laurel</label>
+    </p>
+    <p>{{model_names}}</p>
+    <hr>
+    <h3>单选框绑定数据</h3>
+    <p>
+        <input type="radio" id="nan" value="男" v-model="sex">
+        <label for="nan">男</label>
+        <input type="radio" id="nv" value="女" v-model="sex">
+        <label for="nv">女</label>
+    </p>
+    <p>你选择的性别是：{{sex}}</p>
+</div>
+
+
+<!--
+    v-model:双向绑定
+    v-model.lazy
+    v-model.number
+    v-model.trim
+-->
+
+<script type="text/javascript">
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: "Hello World!",
+            ifTrue: true,
+            model_names: [],
+            sex: "男",
+        },
+        methods:{
+
+        }
+    });
+</script>
+</body>
+</html>

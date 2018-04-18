@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>component 父子组件关系</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>component 父子组件关系</h1>
+<hr>
+<div id="app">
+    <panda></panda>
+</div>
+<!--
+    在实际开发中我们经常会遇到在一个自定义组件中要使用其他自定义组件，这就需要一个父子组件关系。
+-->
+<!--（1）可以将子组件放置在单独的js文件中，通过外部引用的形式加载，保持代码整洁干净-->
+<!--（2）注意组件嵌套时候的父子关系-->
+
+<script type="text/javascript">
+
+    var city = {
+        template: `<div style="color:green;">siChuan of China</div>`,
+    };
+
+    var pandaComponent = {
+        template: `
+            <div>
+                <p style="color:red;">Panda from China !</p>
+                <city></city>
+            </div>
+        `,
+        components: {
+            "city": city,
+        },
+    };
+
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: 'China',
+        },
+        components: {
+            "panda": pandaComponent,
+        },
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>methods option 方法选项</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>methods option 方法选项</h1>
+<hr>
+<div id="app">
+    <p>当前温度：{{temper}}°</p>
+    <p>穿衣建议：{{advice}}</p>
+    <p><button @click="addTemper(2, $event)">Add-2</button></p>
+    <p><btn @click.native="addTemper(5)"></btn></p>
+</div>
+
+<button onclick="app.addTemper(3)">Add-3</button>
+
+
+<!--
+    (1)methods 中参数的传递
+    (2)$event 鼠标监控事件便于更灵活的界面交互
+    (3)模板组件调用 构造器内部的方法:  @click.native
+    (4)作用域外部调用构造器内部的方法:  app.funcName
+
+-->
+
+<script type="text/javascript">
+    var btnComponent = {
+        template: `<button>Add-5</button>`,
+    };
+    var wears = ['T恤衫', '长袖', '羽绒服'];
+    var app = new Vue({
+        el: "#app",
+        data: {
+            temper: 0,
+            advice: "羽绒服",
+        },
+        components: {
+            "btn": btnComponent,
+        },
+        methods: {
+            addTemper: function(num, event){
+                if(num!=""){
+                    this.temper += num;
+                }else{
+                    this.temper++;
+                }
+                console.log(event);
+            }
+        },
+    });
+
+    app.$watch('temper',function(newVal, oldVal){
+        if(newVal >= 26){
+            this.advice = wears[0];
+        }else if(newVal < 26 && newVal >= 15){
+            this.advice = wears[1];
+        }else{
+            this.advice = wears[2];
+        }
+    });
+</script>
+</body>
+</html>
+

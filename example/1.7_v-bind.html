@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>v-bind实例</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <style>
+        .classA {
+            color: red;
+        }
+        .classB {
+            font-size: 150%;
+        }
+
+    </style>
+</head>
+<body>
+<h1>v-bind实例</h1>
+<hr>
+<div id="app">
+    <p>
+        <img v-bind:src="imgSrc" alt="#" width="150px;">
+    </p>
+    <p>
+        <a :href="urlStr" target="_blank">百度搜索</a>
+    </p>
+    <hr>
+    <h3>class的动态绑定</h3>
+    <div :class="className">1、class的动态绑定</div>
+    <div :class="{classA:isOk}">2、绑定class中的判断</div>
+    <div :class="[class01, class02]">3、绑定class中的数组</div>
+    <div :class="isOk?class01:class02">4、绑定class中的三元运算符</div>
+    <hr>
+    <div>
+        <input type="checkbox" id="isOk" v-model="isOk">
+        <label for="isOk">isOk = {{isOk}}</label>
+    </div>
+    <hr>
+    <h3>绑定元素属性值</h3>
+    <p>
+        <span :style="{color:colorVal, fontSize: fontVal}">5、绑定Style</span>
+        =>
+        <span :style="styleObj">6、以对象的形式绑定元素Style</span>
+    </p>
+</div>
+
+<!--
+    v-on：绑定监听事件
+    v-model：绑定数据源
+    v-bind：绑定标签元素，标签属性
+-->
+<!--
+    v-on:click 简写为 @click
+    v-bind:src 简写为 :src
+    v-model.trim  注意属性值用.访问设置
+-->
+<!--
+    注意：vue中不支持 font-size的写法，统一采用小驼峰命名法，即 fontSize
+-->
+
+
+<script type="text/javascript">
+    var app = new Vue({
+        el: "#app",
+        data: {
+            imgSrc: 'http://www.baidu.com/img/bd_logo1.png',
+            urlStr: 'http://www.baidu.com',
+            className: 'classA',
+            isOk: false,
+            class01: 'classA',
+            class02: 'classB',
+            colorVal: 'red',
+            fontVal: '20px',
+            styleObj: {
+                color: 'green',
+                fontSize : '150%'
+            },
+        },
+        methods:{
+
+        }
+    });
+</script>
+</body>
+</html>

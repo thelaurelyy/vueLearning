@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>computed option</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>computed option 计算选项</h1>
+<hr>
+<div id="app">
+    {{newPrice}}
+    <ol>
+        <li v-for="item in reverseNews">{{item.title}}-{{item.date}}</li>
+    </ol>
+</div>
+<!--
+    computed 的作用主要是对原数据进行改造输出；
+    改造输出：包括格式的编辑、大小写的转换、顺序重排、添加符号......
+-->
+<!--
+
+-->
+<script type="text/javascript">
+    var newsList=[
+        {title:'香港或就“装甲车被扣”事件追责 起诉涉事运输公司',date:'2017/3/10'},
+        {title:'日本第二大准航母服役 外媒：针对中国潜艇',date:'2017/3/12'},
+        {title:'中国北方将有明显雨雪降温天气 南方阴雨持续',date:'2017/3/13'},
+        {title:'起底“最短命副市长”：不到40天落马，全家被查',date:'2017/3/23'},
+    ];
+
+    var app = new Vue({
+        el: "#app",
+        data: {
+            price: 10,
+            newsList: newsList,
+        },
+        computed:{
+            newPrice: function(){
+              return this.price = '¥'+ this.price + '元';
+            },
+            reverseNews:function(){
+                return this.newsList.reverse();
+            }
+        },
+    });
+</script>
+</body>
+</html>
+

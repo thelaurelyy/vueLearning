@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>watch option监控数据</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>watch option 监控数据</h1>
+<hr>
+<div id="app">
+    <p>当前温度：{{temper}}°</p>
+    <p>穿衣建议：{{advice}}</p>
+    <p><button @click="addTemper">ADD</button></p>
+    <p><button @click="delTemper">DEL</button></p>
+</div>
+
+<!--
+    watch 监控数据变化
+    注：可以在构造器内部用watch选项监控数据变化，也可以在构造器外部监控数据变化
+-->
+
+<script type="text/javascript">
+    var wears = ['T恤衫', '长袖', '羽绒服'];
+    var app = new Vue({
+        el: "#app",
+        data: {
+            temper: 0,
+            advice: "羽绒服",
+        },
+        methods: {
+            addTemper: function(){
+                this.temper += 1;
+            },
+            delTemper: function(){
+                this.temper -= 1;
+            },
+        },
+        /*watch: {
+            temper: function(newVal, oldVal){
+                if(newVal >= 26){
+                    this.advice = wears[0];
+                }else if(newVal < 26 && newVal >= 15){
+                    this.advice = wears[1];
+                }else{
+                    this.advice = wears[2];
+                }
+            }
+        }*/
+    });
+
+    //法二：
+    app.$watch('temper', function(newVal, oldVal){
+        if(newVal >= 26){
+            this.advice = wears[0];
+        }else if(newVal < 26 && newVal >= 15){
+            this.advice = wears[1];
+        }else{
+            this.advice = wears[2];
+        }
+    });
+</script>
+</body>
+</html>
+

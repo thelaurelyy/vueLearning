@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>component 组件</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component 是学习Vue的重点</h1>
+    <hr>
+    <div id="app">
+        <violet></violet>
+        <dog></dog>
+    </div>
+
+    <div id="ppa">
+        <violet></violet>
+    </div>
+
+    <violet></violet>
+    <!--
+        注意：即使是全局的组件也需要放置在vue的作用域中
+    -->
+    <!--
+        component 组件自定义的是标签
+        vue.directive 指令自定义的是标签属性
+    -->
+    <!--
+        angularJS 框架擅长定义指令
+        vue 及 react 框架擅长定义组件
+    -->
+
+    <script type="text/javascript">
+        Vue.component('violet', {
+            template: `<div style="color:red;">我是全局的violet组件</div>`,
+        });
+        var app = new Vue({
+            el: "#app",
+            components: {     //可在此定义多个、局部的组件
+                "dog": {
+                    template: `<div style="color:green;">我是局部的dog组件</div>`,
+                }
+            },
+        });
+        var ppa = new Vue({
+            el: "#ppa",
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>component 组件 props 属性设置</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>component 组件 props 属性设置</h1>
+<hr>
+<div id="app">
+    <dog adjective="cute"></dog>
+    <cat if-naughty="yes"></cat>
+    <panda :here="message"></panda>
+</div>
+<!--插值、注册、小驼峰命名、绑定
+    props  就是设置和获取标签上的属性值
+    （1）props  属性值需要注册，请注意不要漏掉
+    （2）对于标签中"if-naughty"这样，中间带"-"的属性值，需要在引用和注册中改为小驼峰命名法
+    （3）可以通过v-bind指令，设置模板属性为data中的参数
+-->
+
+<script type="text/javascript">
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: 'China',
+        },
+        components: {
+            "panda": {
+                template: `<div style="color: red;">Panda from {{ here }}</div>`,   //插值
+                props: ['here'],
+            },
+            "dog": {
+                template: `<div style="color: green;">dog is very {{ adjective }}</div>`,
+                props: ['adjective'],
+            },
+            "cat": {
+                template: `<div style="color: purple;">if your cat naughty ? {{ ifNaughty }}</div>`,
+                props: ['ifNaughty'],
+            }
+        },
+    });
+</script>
+</body>
+</html>

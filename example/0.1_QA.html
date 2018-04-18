@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue的学习疑问及解答</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>学习总结</h2>
+        <div class="summary summary_01">
+            <h3>一、内部指令</h3>
+            <table>
+                <tr>
+                    <td>1、<strong>v-if <br> v-else</strong></td>
+                    <td>根据参数判断元素是否需要加载，以减轻服务器压力</td>
+                </tr>
+                <tr>
+                    <td>2、<strong>v-for</strong></td>
+                    <td>循环渲染一组数据，指令需要以v-for="(item, index) in items"的语法形式编写</td>
+                </tr>
+                <tr>
+                    <td>3、<strong>v-text <br> v-html</strong></td>
+                    <td>v-text其作用相当与{{}}指令，优势在于网页加载缓慢时可以隐藏变量名称 <br>
+                        v-html则用于显示含有DOM标签元素的变量
+                    </td>
+                </tr>
+                <tr>
+                    <td>4、<strong>v-on</strong></td>
+                    <td>v-on用于绑定监听事件，例如 v-on:click 、 v-on:keyup.enter(v-on:keyup.13) <br>
+                        事件方法在作用域的methods属性中定义 <br>
+                        缩写标识为@  例如：@click、@hover
+                    </td>
+                </tr>
+                <tr>
+                    <td>5、<strong>v-model</strong></td>
+                    <td>v-model用于数据源双向绑定 <br>
+                        它有三个属性值：v-model.lazy、v-model.number、v-model.trim
+                    </td>
+                </tr>
+                <tr>
+                    <td>6、<strong>v-bind</strong></td>
+                    <td>v-bind用于绑定标签元素、标签属性 <br>
+                        vue中不支持 font-size的写法，统一采用小驼峰命名法，即 fontSize <br>
+                        缩写标识为:  例如  :src、 :class <br>
+                        <label style="color: red;">v-bind的值可以为数组、可以为对象、可以为变量、也可以直接绑定值，建议后期看源码的时候多观察总结一下</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>7、<strong>v-pre <br> v-cloak <br> v-once</strong></td>
+                    <td>v-pre 在模板中跳过vue的变异，直接输出原始值<br>
+                        v-cloak 在vue渲染完指定的整个DOM后才进行显示。它必须和CSS样式一起使用<br>
+                        v-once 在第一次DOM时进行渲染，渲染完成后视为静态内容，跳出以后的渲染过程
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="summary summary_02">
+            <h3>二、全局API</h3>
+            <p>
+                全局API并不在构造器中，而是先声明全局变量或者直接在Vue上定义一些新功能；
+                Vue内置了一些全局API，这些就是我们接下来的学习内容；
+                简单点说就是，在构造器外部 - 用Vue提供给我们的API函数 - 来定义新的功能；
+            </p>
+            <table>
+                <tr>
+                    <td>1、<strong>Vue.directive 自定义指令</strong></td>
+                    <td>
+                        自定义指令有五个生命周期（也叫钩子函数），分别是 bind，inserted，update，componentUpdated，unbind
+                        即第一次绑定到元素时，元素插入父节点时，模板更新时，模板更新完成时，指令与元素解绑时
+                    </td>
+                </tr>
+                <tr>
+                    <td>2、<strong>Vue.extend 拓展实例构造器</strong></td>
+                    <td>vue 构造器的延伸，它预设了部分选项的vue实例构造器。经常服务于vue.component用来生成组件。
+                        可以简单理解为，当在模板中遇到该组件名称作为标签的自定义元素时，会自动调用“拓展实例构造器”来生产组件实例，并挂载到自定义元素上。<br>
+                        注意： 该组件的参数，是以方法返回值的形式输出！
+                    </td>
+                </tr>
+                <tr>
+                    <td>3、<strong>Vue.set 全局操作</strong></td>
+                    <td>其作用就是在构造器外部操作构造器内部的数据、属性或者方法
+                        有三种方法可以在构造器外部改变数据：
+                            Vue.set(outData.arr, 1, 'ddd');  //单纯变更数组下标元素，数组长度，vue是无法监听到的
+                            app、outData
+                    </td>
+                </tr>
+                <tr>
+                    <td>4、<strong>Vue 的生命周期</strong></td>
+                    <td>beforeCreate、created、beforeMount、mounted、beforeUpdate、updated、activated、deactivated、beforeDestroy、destroyed</td>
+                </tr>
+                <tr>
+                    <td>5、<strong>template 制作模板</strong></td>
+                    <td>理解：
+                        在拓展（Vue.extend）和制作(Vue.component)组件中，常常会用到template关键字用于设计组件的模板内容；
+                        这里的template是vue作用域中的属性值，制作模板有三种方式。
+                    </td>
+                </tr>
+                <tr>
+                    <td>6、<strong><label style="color: #f00;">重点：</label>初识组件</strong></td>
+                    <td><p>（1）component组件自定义的是组件，vue.templa 指令自定义的是标签属性
+                        （2）angularJS 框架擅长定义指令，vue和react擅长定义组件
+                        （3）即使是全局的组件也需要放置在vue的作用于中
+                        （4）组件的props属性 用来设置和获取标签上的属性值，
+                             注意注册和引用的时候需要用小驼峰命名法，
+                             也可以用v-bind指令来设置模板属性为data中的参数
+                        （5）组件的父子组件关系 可以将子组件放置在单独的js文件中，外部引用从而保持代码整洁干净，
+                             注意嵌套时的父子组件关系
+                        （6）component标签 可以通过绑定值的方式制定模板类型,eg. <component :is="who"></component>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <hr>
+        <div class="summary summary_03">
+            <h3>三、vue选项</h3>
+            <table>
+                <tr>
+                    <td>1、<strong>全局拓展的数据传递</strong></td>
+                    <td><p>propsData
+                        三步走战略：
+                        （1）在全局拓展中加入propsData进行接收，propsData: {a: 1}；
+                        （2）传递时用props属性值进行传递， props['a']
+                        （3）用插值的形式写入模板，{{a}}
+                        注：propsData在实际开发中使用的并不多，Vuex的作用就是在单页应用中保持数据与状态。
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2、<strong>computed 计算选项</strong></td>
+                    <td>
+                        <p>
+                            computed 的作用主要是对原数据进行改造输出
+                            改造输出：包括格式的编辑、大小写的转换、顺序重排、添加符号......
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3、<strong>methods 方法选项</strong></td>
+                    <td>
+                        <p>注意：
+                            （1）参数的传递  （2）$event 鼠标监控事件便与更灵活的界面交互
+                            （3）<strong>模板组件调用 构造器内部方法</strong> @click.native
+                            （4）作用域外部调用构造器内部的方法 onclick="app.funcName"
+                            （5）作用域内部变量的监听事件 app.$watch('variable', function(newVal, oldVal){ ... })
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4、<strong>watch 监控选项</strong></td>
+                    <td>
+                        <p>注意：
+                            （1）可以在构造器内部用watch选项监控数据变化；
+                            （2）也可以在构造器外部监控数据变化， app.$watch('temper', function(newVal, oldVal){...});
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5、<strong>Mixins 混入选项操作</strong></td>
+                    <td>
+                        <p>
+                            1、用数组的形式引入混入方法即可；
+                            2、在Vue中，混入的方法先执行，原生的方法后执行；
+                            注意：这并不是方法的覆盖，而是被执行了两遍。
+                            但是当混入方法和构造器的方法重名时，混入的方法无法展现，也就是不起作用。
+                            3、全局混入用全局API的方式： Vue.mixin({})
+                            注意混入的执行顺序： 全局混入先执行、其次是混入选项，最后执行原生方法；
+                            4、Mixins一般有两种用途；
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6、<strong>Extends 拓展选项</strong></td>
+                    <td>
+                        <p>
+                            extends 和 mixins 很相像
+                            <label class="red">相同点：</label>
+                            （1）在vue中，混入的执行顺序为：全局混入先执行、然后是混入选项、最后执行原生的方法；
+                                 拓展的执行顺序为：拓展选项先执行，原生的（钩子函数）后执行；
+                            （2）当混入/拓展的方法和构造器的方法重名时，混入/拓展的方法不起作用；
+
+                            <label class="red">不同点：</label>
+                            （1）混入 要用<strong>数组</strong>的形式引入混入方法；
+                            （2）拓展 要用<strong>对象</strong>的形式引入拓展方法；
+                        </p>
+                        <p>修改用于插值的符号，用delimiters选项，以数组的形式定义符号，eg. delimiters: ['${', '}']</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <hr>
+        <div class="summary summary_04">
+            <h3>四、vue实例和内置组件</h3>
+            <table>
+                <tr>
+                    <td>1、<strong>实例入门-实例属性</strong></td>
+                    <td>
+                        <p>
+                            （1）
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </div>
+    <div class="container">
+        <h2>类比学习</h2>
+        <ol>
+            <li>
+                <h4>vue.directive 多用于自定义指令 ？？</h4>
+                <p></p>
+                <p>补充说明：Vue 和 React 更擅长定义组件，angularJS 更擅长定义指令</p>
+            </li>
+            <li>
+                <h4>关于Vue.extend的总结</h4>
+                <p>关联课程：
+                        4.2 构造器的$mount实例方法     ——将拓展的实例构造器挂载绑定到指定标签元素或选择器
+                        3.1 propsData全局拓展的数据传递——为拓展的实例构造器传递参数
+                        2.2 Vue.extend构造器的延伸    ——预设部分选项的Vue实例构造器，经常服务于Vue.component用来生成组件
+                    差异联想：
+                        3.6 extends选项 类似与 3.5 mixins选项——（1）用于减少成型构造器源码的污染；（2）编写公共方法，实现代码重用；
+                </p>
+            </li>
+            <li>
+                <h4>Vue.extend 和 Vue.component 的区别？</h4>
+                <p>答：</p>
+                <p>补充说明：
+                    实际编程中我们并不推荐用全局扩展的方式作自定义标签，我们学了组件，完全可以使用组件；</p>
+            </li>
+            <li>
+                <h4>注意2.7 component的props 以及 3.1 propsData ？</h4>
+            </li>
+            <li>
+                <h4>$forceUpdate/$nexTick/生命周期updated 三者的区别？</h4>
+                <h4>为什么调用vue的$destroy方法后，点击$forceUpdate/$nexTick ，仍然有响应？？？</h4>
+            </li>
+        </ol>
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>template 制作模板</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>template 制作模板的三种方法</h1>
+    <hr>
+    <div id="app">
+        <p>{{message}}</p>
+    </div>
+    <!--方法二：在标签中建模板-->
+    <template id="dd2">
+        <h2 style="color: red;">我是template标签模板</h2>
+    </template>
+
+    <!--方法三：在script中建模板，优点：可以设置src属性进行外部引用模板-->
+    <script type="x-template" id="dd3">
+        <h2 style="color: #ffa80a;">我是script标签模板</h2>
+    </script>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: 'Hello World !',
+            },
+            /*template: "#dd3",*/
+            template: `
+                   <h2 style="color:red">我是template选项模板</h2>       <!--方法一：在选项中建模板-->
+            `,
+        });
+    </script>
+</body>
+</html>
