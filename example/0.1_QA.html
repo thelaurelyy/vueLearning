@@ -221,6 +221,18 @@
                         （4）app.$emit( event );
                     </p></td>
                 </tr>
+                <tr>
+                    <td>4、<strong>内置组件-slot讲解</strong></td>
+                    <td>
+                        <p>技术点：
+                            （1）template 标签 及 组件对象；   ——  注意：在template标签中，需要用div将所有的模板元素包裹起来
+                            （2）vue 的components 选项；
+                            （3）用于组件传值，使用有两步：
+                                a. 在组件中用 span 标签的slot属性命名，span标签的text传值；
+                                b. 在模板中用 slot 标签的name属性取值；
+                        </p>
+                    </td>
+                </tr>
             </table>
         </div>
     </div>
@@ -242,6 +254,10 @@
                     差异联想：
                         3.6 extends选项 类似与 3.5 mixins选项——（1）用于减少成型构造器源码的污染；（2）编写公共方法，实现代码重用；
                 </p>
+            </li>
+            <li>
+                <h4>熟悉Vue 的模板与组件，包括：
+                    template标签、模板的template属性、vue的components属性、Vue.component全局API等等</h4>
             </li>
             <li>
                 <h4>Vue.extend 和 Vue.component 的区别？</h4>

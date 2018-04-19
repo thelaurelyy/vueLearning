@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>实例入门-实例事件</title>
+    <title>内置组件-slot讲解</title>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -10,70 +10,51 @@
     <script type="text/javascript" src="../assets/js/jquery-3.3.1.min.js"></script>
 </head>
 <body>
-<h1>实例入门 之 实例事件</h1>
+<h1>内置组件 slot讲解</h1>
 <hr>
+
     <div id="app">
-        {{num}}
-        <div>
-            <button @click="add">ADD</button>
-        </div>
+        <violet>
+            <span slot="gitUrl">{{yyData.gitUrl}}</span>
+            <span slot="netName">{{yyData.netName}}</span>
+            <span slot="skills">{{yyData.skills}}</span>
+        </violet>
     </div>
-    <p><button onclick="reduce()">Reduce</button></p>
-    <p><button onclick="reduceOnce()">ReduceOnce</button></p>
-    <p><button onclick="offReduce()">offReduce</button></p>
 
-    <!--
-        实例事件就是在构造器外部写一个调用构造器内部的方法，
-        这样做的好处就是，可以在构造器外部调用构造器内部的数据
+    <template id="yuanyue">
+        <div>
+            <p>git地址：<slot name="gitUrl"></slot></p>
+            <p>网名：<slot name="netName"></slot></p>
+            <p>技术栈：<slot name="skills"></slot></p>
+        </div>
+    </template>
 
-        vm.$on( event, fn );//监听event事件后运行
-        vm.$emit( event, arg ) //触发当前实例上的事件
-
-
-        app.$on
-            （1）如果按钮在作用域外部，外部调用内部事件，需要利用$emit来执 行app.$emit
-            （2）外部调用方法需要加上()执行
-        app.$once
-            （1）app.$emit
-            （2）方法只执行一次
-        app.$off
-            关闭事件
+    <!--技术点：
+         （1）template 标签 及 组件对象；   ——  注意：在template标签中，需要用div将所有的模板元素包裹起来
+         （2）vue 的components 选项；
+         （3）用slot为组件传值需要两步：
+            a. 在组件中用  span标签的  slot属性  定义参数名称，span标签的text传值；
+            b. 在模板中用  slot标签的  name属性  取值；
     -->
 
     <script type="application/javascript">
+        var yuanyue = {
+            template: `#yuanyue`
+        }
+
         var app = new Vue({
-            el: "#app",
+            el: '#app',
             data: {
-              num: 0
-            },
-            methods: {
-                add: function () {
-                    this.num++;
+                yyData: {
+                    gitUrl: 'https://github.com/thelaurelyy',
+                    netName: '天狗',
+                    skills: 'web前端开发'
                 }
+            },
+            components: {
+                "violet": yuanyue
             }
         });
-        
-        app.$on('reduce', function () {
-            this.num--;
-            console.log('执行了方法reduce');
-        });
-
-        app.$once('reduceOnce', function () {
-            this.num--;
-            console.log('reduceOnce只执行一次')
-        })
-
-        function reduce(){
-            app.$emit('reduce');
-        }
-        
-        function reduceOnce() {
-            app.$emit('reduceOnce');
-        }
-        
-        function offReduce() {
-            app.$off('reduce')
-        }
     </script>
 </body>
 </html>
