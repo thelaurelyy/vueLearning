@@ -82,8 +82,12 @@
                     <td>3、<strong>Vue.set 全局操作</strong></td>
                     <td>其作用就是在构造器外部操作构造器内部的数据、属性或者方法
                         有三种方法可以在构造器外部改变数据：
-                            Vue.set(outData.arr, 1, 'ddd');  //单纯变更数组下标元素，数组长度，vue是无法监听到的
-                            app、outData
+                            Vue.set(outData.arr, 1, 'ddd');
+                            outData
+                            app
+                        由于Javascript的限制，Vue不能自动检测以下变动的数组。
+                        *当你利用索引直接设置一个项时，vue不会为我们自动更新。
+                        *当你修改数组的长度时，vue不会为我们自动更新。
                     </td>
                 </tr>
                 <tr>
@@ -241,30 +245,53 @@
         <h2>类比学习</h2>
         <ol>
             <li>
-                <h4>vue.directive 多用于自定义指令 ？？</h4>
-                <p></p>
+                <h4>vue.directive 多用于自定义指令或标签属性</h4>
+                <p>关联课程：
+                        2.1 Vue.directive    —— ？？？
+                </p>
                 <p>补充说明：Vue 和 React 更擅长定义组件，angularJS 更擅长定义指令</p>
             </li>
             <li>
                 <h4>关于Vue.extend的总结</h4>
                 <p>关联课程：
-                        4.2 构造器的$mount实例方法     ——将拓展的实例构造器挂载绑定到指定标签元素或选择器
-                        3.1 propsData全局拓展的数据传递——为拓展的实例构造器传递参数
-                        2.2 Vue.extend构造器的延伸    ——预设部分选项的Vue实例构造器，经常服务于Vue.component用来生成组件
-                    差异联想：
-                        3.6 extends选项 类似与 3.5 mixins选项——（1）用于减少成型构造器源码的污染；（2）编写公共方法，实现代码重用；
+                        2.2 Vue.extend构造器的延伸      ——预设部分选项的Vue实例构造器，经常服务于Vue.component用来生成组件
+                        3.1 propsData全局拓展的数据传递 ——为拓展的实例构造器传递参数
+                        4.2 构造器的$mount实例方法      ——将拓展的实例构造器挂载绑定到指定标签元素或选择器
+                    易错点：
+                        extend API 中data的值必须以 匿名函数 的形式定义，以对象的形式返回！
+                        extend 构造器可直接作用于app.components选项中
+                    联想：
+                        3.6 extends选项 类似与 3.5 mixins选项  ——方法的拓展与混入：（1）用于减少成型构造器源码的污染；（2）编写公共方法，实现代码重用；
+                </p>
+            </li>
+
+            <li>
+                <h4>熟悉Vue 的模板与组件，包括：
+                    template标签、拓展和组件的template属性、
+                    Vue.extend 拓展实例构造器、Vue.component全局API、vue的components选项等等</h4>
+                    组件的props属性值、父子组件关系、component标签
+                <p>关联课程：
+                        2.5 template制作模板的三种方法：
+                                            （1）template选项
+                                            （2）在 template标签定义模板，设置id，在构造器的template选项中进行引用
+                                            （3）在 script 标签中定义模板，设置id，在构造器的template选项中进行引用  ！可以外部引用js文件！
+                        2.2 Vue.extend       ——拓展实例构造器
+                        2.6 Vue.component    ——全局的组件API  注意：即使是全局的组件也需要放在Vue作用域中
+                            components 选项  ——以对象的形式，可以定义多个、局部的组件
+
                 </p>
             </li>
             <li>
-                <h4>熟悉Vue 的模板与组件，包括：
-                    template标签、模板的template属性、vue的components属性、Vue.component全局API等等</h4>
+                <h4>Vue.extend 和 Vue.component 的异同？</h4>
+                <p>关联：
+                    （1）Vue.extend()  常用于创建“拓展实例构造器”，作用于组件中的自定义标签元素，
+                        当Vue没有指定el选项时，它的实例需要用 $mount(selector) 挂载到指定元素，
+                        当Vue指定了el选项，它的实例可以直接赋值给Vue的components选项
+                    （2）两者都可以利用各自的
+                </p>
+                <p>补充说明：实际编程中并不推荐用全局扩展的方式作自定义标签，我们学了组件，完全可以使用组件；</p>
             </li>
-            <li>
-                <h4>Vue.extend 和 Vue.component 的区别？</h4>
-                <p>答：</p>
-                <p>补充说明：
-                    实际编程中我们并不推荐用全局扩展的方式作自定义标签，我们学了组件，完全可以使用组件；</p>
-            </li>
+
             <li>
                 <h4>注意2.7 component的props 以及 3.1 propsData ？</h4>
             </li>

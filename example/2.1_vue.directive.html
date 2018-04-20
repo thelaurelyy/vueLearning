@@ -19,7 +19,6 @@
     <p>
         <button onclick="unBind();">解绑</button>
     </p>
-
 </div>
 <!--
 全局API
@@ -53,6 +52,7 @@
     Vue.directive('yy', {
         bind:function(el, binding){//被绑定
             console.log('1 - bind');
+            //console.log(binding);
             el.style = 'color:'+ binding.value;
         },
         inserted:function(){//绑定到节点

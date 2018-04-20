@@ -25,19 +25,31 @@
     <author></author>
     <div id="author"></div>
 
+    <div id="app">
+        <hhh></hhh>
+    </div>
+
     <script type="text/javascript">
         var authorExtend = Vue.extend({
             template: '<p><a :href="extendUrl" target="_blank">{{extendName}}</a></p>',
             data: function(){
-              return {
+                return {
                   extendUrl: 'http://jsPang.com',
                   extendName: 'violet',
-              }
+                }
             },
         });
-
         new authorExtend().$mount('author');
         new authorExtend().$mount('#author');
+
+
+        //注：构造构造器可直接作用于components选项中
+        var app = new Vue({
+            el: '#app',
+            components: {
+                "hhh": authorExtend,
+            }
+        });
     </script>
 </body>
 </html>
