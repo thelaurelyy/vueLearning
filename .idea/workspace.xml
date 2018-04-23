@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68769578-5db9-4d59-b13f-c07abaeb73a1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/0.1_QA.html" afterPath="$PROJECT_DIR$/example/0.1_QA.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/2.1_vue.directive.html" afterPath="$PROJECT_DIR$/example/2.1_vue.directive.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/2.2_vue.extend.html" afterPath="$PROJECT_DIR$/example/2.2_vue.extend.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/2.3_vue.set.html" afterPath="$PROJECT_DIR$/example/2.3_vue.set.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/2.5_template.html" afterPath="$PROJECT_DIR$/example/2.5_template.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/4.2_example02.html" afterPath="$PROJECT_DIR$/example/4.2_example02.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/2.6_component.html" afterPath="$PROJECT_DIR$/example/2.6_component.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -51,24 +45,24 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="2.6_component.html" pinned="false" current-in-tab="false">
+          <file leaf-file-name="2.6_component.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/example/2.6_component.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="52">
-                  <caret line="23" column="8" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
+                <state relative-caret-position="442">
+                  <caret line="32" column="4" lean-forward="false" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
                   <folding>
-                    <marker date="1524216564440" expanded="true" signature="891:901" ph="..." />
-                    <marker date="1524216564440" expanded="true" signature="1103:1115" ph="..." />
+                    <marker date="1524447041255" expanded="true" signature="863:873" ph="..." />
+                    <marker date="1524447041255" expanded="true" signature="1075:1087" ph="..." />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="2.7_component_props.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="2.7_component_props.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/example/2.7_component_props.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="234">
-                  <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+                <state relative-caret-position="590">
+                  <caret line="23" column="3" lean-forward="true" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="3" />
                   <folding>
                     <marker date="1514512772411" expanded="true" signature="946:957" ph="..." />
                     <marker date="1514512772411" expanded="true" signature="1104:1117" ph="..." />
@@ -208,8 +202,8 @@
         <option value="$PROJECT_DIR$/example/2.5_template.html" />
         <option value="$PROJECT_DIR$/example/2.3_vue.set.html" />
         <option value="$PROJECT_DIR$/example/2.2_vue.extend.html" />
-        <option value="$PROJECT_DIR$/example/2.6_component.html" />
         <option value="$PROJECT_DIR$/example/0.1_QA.html" />
+        <option value="$PROJECT_DIR$/example/2.6_component.html" />
       </list>
     </option>
   </component>
@@ -465,7 +459,7 @@
       <workItem from="1522830036184" duration="942000" />
       <workItem from="1523414194065" duration="671000" />
       <workItem from="1523581693829" duration="11929000" />
-      <workItem from="1523849935637" duration="59250000" />
+      <workItem from="1523849935637" duration="59745000" />
     </task>
     <task id="LOCAL-00001" summary="修改学习总结">
       <created>1524016356633</created>
@@ -485,7 +479,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="270131000" />
+    <option name="totallyTimeSpent" value="270626000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -500,7 +494,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12153518" sideWeight="0.496208" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12153518" sideWeight="0.496208" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.49713466" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.5028653" order="0" side_tool="true" content_ui="tabs" />
@@ -856,17 +850,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/2.6_component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="23" column="8" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
-          <folding>
-            <marker date="1524216564440" expanded="true" signature="891:901" ph="..." />
-            <marker date="1524216564440" expanded="true" signature="1103:1115" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/example/2.8_component_relation.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
@@ -891,18 +874,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/2.7_component_props.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-          <folding>
-            <marker date="1514512772411" expanded="true" signature="946:957" ph="..." />
-            <marker date="1514512772411" expanded="true" signature="1104:1117" ph="..." />
-            <marker date="1514512772411" expanded="true" signature="1268:1282" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/example/0.1_QA.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
@@ -913,6 +884,29 @@
             <element signature="n#style#0;n#label#0;n#strong#0;n#td#0;n#tr#5;n#table#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/2.7_component_props.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="590">
+          <caret line="23" column="3" lean-forward="true" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="3" />
+          <folding>
+            <marker date="1514512772411" expanded="true" signature="946:957" ph="..." />
+            <marker date="1514512772411" expanded="true" signature="1104:1117" ph="..." />
+            <marker date="1514512772411" expanded="true" signature="1268:1282" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/2.6_component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="32" column="4" lean-forward="false" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
+          <folding>
+            <marker date="1524447041255" expanded="true" signature="863:873" ph="..." />
+            <marker date="1524447041255" expanded="true" signature="1075:1087" ph="..." />
           </folding>
         </state>
       </provider>
